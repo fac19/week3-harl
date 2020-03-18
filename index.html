@@ -10,9 +10,25 @@
 
 <body>
 
-    <header class="title" id="title">
-        <h1>TODO list app</h1>
-    </header>
+  <header class="title" id="title">
+    <h1>TODO list app</h1>
+  </header>
+
+  <ul class="to-do-list" id="toDoList">
+    <template id="cardTemplate">
+      <li class="to-do-list__card">
+        <div class="to-do-list__card__priority"></div>
+        <p class="to-do-list__card__text"></p>
+        <input class="to-do-list__card__checkbox" type="checkbox"></input>
+      </li>
+    </template>
+  </ul>
+
+  <ul class="done-list" id="doneList">
+    
+  </ul>
+
+  <button class="new-task-button" id="newTaskButton">+</button>
 
   <script src="index.js"></script>
   <script src="testhelpers.js"></script>
