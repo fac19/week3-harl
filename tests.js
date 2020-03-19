@@ -49,13 +49,14 @@ test("Checking if submiting the new task form addes a task to the to-do list", t
     highPriority.click();
     formText.textContent = "submit integration test.";
     formSubmit.click();
-
+    
     let thePriority = document.querySelector(".to-do-list > li:last-child > div");
     let theText = document.querySelector(".to-do-list > li:last-child > p");
     let theStatus = document.querySelector(".to-do-list > li:last-child > input");
     t.equal(thePriority.classList.contains("high"), true);
     t.equal(theText.textContent, "submit integration test.");
     t.equal(theStatus.checked, false);
+    clearList(".to-do-list > li");
 });
 
 test("Checking an entry marks it as complete", t => {
