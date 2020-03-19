@@ -1,7 +1,3 @@
-console.log("Running tests...");
-console.log("Done.");
-
-
 function clearList(listSelector){
     let theList = document.querySelectorAll(listSelector);
     theList.forEach( elem =>{
@@ -68,17 +64,20 @@ test("Deleting an entry removes it from the list", t => {
 });
 
 test("Toggling the filter hides completed tasks from the list", t => {
-    // test goes here
+    doneTab.click();
+    const result = doneTab.classList.contains("hidden")
+    t.equal(result, false)
+    toDoTab.click()
 });
 
-// test("Selecting low radio button returns a correct value when clicked or selected on keyboard", t => {
-//   const result = lowPriority.value;
-//   lowPriority.click();
-//   t.equal(result, "low");    
-// });
+test("Selecting low radio button returns a correct value when clicked or selected on keyboard", t => {
+  const result = lowPriority.value;
+  lowPriority.click();
+  t.equal(result, "low");    
+});
 
-// test("Selecting high radio button returns a correct value when clicked or selected on keyboard", t => {
-//     const result = highPriority.value;
-//     highPriority.click();
-//     t.equal(result, "high");    
-// });
+test("Selecting high radio button returns a correct value when clicked or selected on keyboard", t => {
+    const result = highPriority.value;
+    highPriority.click();
+    t.equal(result, "high");    
+});
