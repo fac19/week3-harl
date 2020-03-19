@@ -2,6 +2,11 @@ console.log("Running main app javascript.");
 console.log("Done.");
 
 const toDoList = document.getElementById("toDoList");
+const toDoTab = document.getElementById("tabsTodo")
+const doneTab = document.getElementById("tabsDone");
+
+toDoList.addEventListener("click", toggleLists);
+doneTab.addEventListener("click", toggleLists);
 
 function addTask(priority, text, status){
     
@@ -27,4 +32,10 @@ function addTaskToDone(){
   // If status checked is true
   // Add class done to task
   // Populate done list with done tasks
+}
+
+function toggleLists(){
+  //Apply toggle to tab buttons to display tasks in lists
+  //When user clicks to do tab, apply hidden class to done items
+  //Else if user clicks done tab, apply hidden class to do items
 }
