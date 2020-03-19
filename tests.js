@@ -56,8 +56,6 @@ test("Checking if submiting the new task form addes a task to the to-do list", t
     formText.textContent = "";
 });
 
-
-
 test("Checking an entry marks it as complete", t => {
   // test goes here
 });

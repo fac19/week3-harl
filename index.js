@@ -53,9 +53,10 @@ function addTask(priority, text, checkBox){
         // Put fields in edit form
         console.log("TEXTBOX Event handler fired.", e);
         theNode = getAncestorIfItHasClass(e.target, "to-do-list__card")
-        formText.textContent = theNode.querySelector(".to-do-list__card__text").textContent
+        formText.value = theNode.querySelector(".to-do-list__card__text").textContent
         
         // Delete entry from list
+        theNode.remove();
 
         // Trigger UI change i.e. hide list and show edit form.
     })
@@ -81,26 +82,12 @@ formSubmit.addEventListener("click", event => {
     addTask(selected.value, text, false);
 })
 
-//Detect when the user clicks on a task to trigger the form
-// toDoList.addEventListener("click", event => {
-//     // console.log("EVENT:", event.target.remove());
-//     let nodeToEdit = getAncestorIfItHasClass(event.target, "to-do-list__card");
-//     // console.log("node2edit:", nodeToEdit);
-//     nodeToEdit.remove();
-// })
-
 function getAncestorIfItHasClass(elem, className){
     // recursively check up the family tree for specific className
     console.log(elem);
     if(elem.classList.contains(className)) return elem;
     if(elem.parentElement) return getAncestorIfItHasClass(elem.parentElement, className);
     return false;
-}
-
-function addTaskToDone(){
-  // If status checked is true
-  // Add class done to task
-  // Populate done list with done tasks
 }
 
 
