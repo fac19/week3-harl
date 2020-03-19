@@ -47,3 +47,8 @@ formSubmit.addEventListener("click", event => {
 
 })
 
+function addTaskToDone(){
+  // If status checked is true
+  // Add class done to task
+  // Populate done list with done tasks
+}
