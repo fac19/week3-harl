@@ -28,7 +28,7 @@ test("Checking the correct data is added", t => {
     let theStatus = document.querySelector(".to-do-list > li:last-child > input");
     t.equal(thePriority.classList.contains("low"), true);
     t.equal(theText.textContent, "Clean the fridge");
-    t.equal(theStatus.checked, true)
+    t.equal(theStatus.checked, false);
 
 });
 
