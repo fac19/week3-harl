@@ -8,14 +8,14 @@ const doneList = document.getElementById("doneList");
 const toDoTab = document.getElementById("tabsToDo")
 const doneTab = document.getElementById("tabsDone");
 
-doneTab.addEventListener("click", () => {
-    toDoList.classList.add("hidden");
-    doneList.classList.remove("hidden")
-});
-toDoTab.addEventListener("click", () => {
-  doneList.classList.add("hidden");
-  toDoList.classList.remove("hidden")
-});
+// doneTab.addEventListener("click", () => {
+//     toDoList.classList.add("hidden");
+//     doneList.classList.remove("hidden")
+// });
+// toDoTab.addEventListener("click", () => {
+//   doneList.classList.add("hidden");
+//   toDoList.classList.remove("hidden")
+// });
 
 
 const lowPriority = document.getElementById("priorityLow");
@@ -30,6 +30,9 @@ const formSubmit = document.getElementById("formButton")
 
 function addTask(priority, text, checkBox){
     
+    console.log("PRIORITY:", priority);
+    console.log("TEXT:", text);
+
     // This function clones the card template and inserts it into the
     // task list using the parameters supplied.
 
@@ -73,9 +76,9 @@ function addTask(priority, text, checkBox){
 
 formSubmit.addEventListener("click", event => {
     event.preventDefault();
+    let text = formText.value;
     let selected = [...formPriorityRadios].filter( el => el.checked )[0];
-    addTask(selected.value, formText.textContent, false);
-
+    addTask(selected.value, text, false);
 })
 
 //Detect when the user clicks on a task to trigger the form

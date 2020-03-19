@@ -53,7 +53,10 @@ test("Checking if submiting the new task form addes a task to the to-do list", t
     t.equal(theText.textContent, "submit integration test.");
     t.equal(theStatus.checked, false);
     clearList(".to-do-list > li");
+    formText.textContent = "";
 });
+
+
 
 test("Checking an entry marks it as complete", t => {
   // test goes here
