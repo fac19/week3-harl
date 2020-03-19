@@ -1,5 +1,7 @@
 console.log("Running main app javascript.");
 console.log("Done.");
+let nodeID = 0;
+const getNewID = _ => { nodeID++; return nodeID; }
 
 const toDoList = document.getElementById("toDoList");
 const doneList = document.getElementById("doneList");
@@ -20,13 +22,28 @@ function addTask(priority, text, checkBox){
     // task list using the parameters supplied.
 
     let template = document.getElementById('cardTemplate');
-    let newTask = template.content.cloneNode(true)
-
+    let newTask = template.content.cloneNode(true);
+    let theLi = newTask.querySelector(".to-do-list__card");
+    let taskID = "task"+getNewID();
+    theLi.id = taskID;
+    
     let thePriority = newTask.querySelector(".to-do-list__card__priority");
     thePriority.classList.add(priority);
+    // thePriority.id = "task"+getNewID();
     
     let theText = newTask.querySelector(".to-do-list__card__text");
     theText.textContent = text;
+    theText.addEventListener("click", e => {
+
+        // Put fields in edit form
+        console.log("TEXTBOX Event handler fired.", e);
+        theNode = getAncestorIfItHasClass(e.target, "to-do-list__card")
+        formText.textContent = theNode.querySelector(".to-do-list__card__text").textContent
+        
+        // Delete entry from list
+
+        // Trigger UI change i.e. hide list and show edit form.
+    })
     
     let theStatus = newTask.querySelector(".to-do-list__card__checkbox");
     theStatus.addEventListener("click", () => {
@@ -47,8 +64,26 @@ formSubmit.addEventListener("click", event => {
 
 })
 
+//Detect when the user clicks on a task to trigger the form
+// toDoList.addEventListener("click", event => {
+//     // console.log("EVENT:", event.target.remove());
+//     let nodeToEdit = getAncestorIfItHasClass(event.target, "to-do-list__card");
+//     // console.log("node2edit:", nodeToEdit);
+//     nodeToEdit.remove();
+// })
+
+function getAncestorIfItHasClass(elem, className){
+    // recursively check up the family tree for specific className
+    console.log(elem);
+    if(elem.classList.contains(className)) return elem;
+    if(elem.parentElement) return getAncestorIfItHasClass(elem.parentElement, className);
+    return false;
+}
+
 function addTaskToDone(){
   // If status checked is true
   // Add class done to task
   // Populate done list with done tasks
 }
+
+

@@ -2,11 +2,11 @@ console.log("Running tests...");
 console.log("Done.");
 
 test("Check the function exists", t => {
-    addTask("low","Clean the fridge",false);
+    addTask("low","Clean the fridge 1",false);
 });
 
 test("Submitting a new task adds something to the list", t => {
-    addTask("low","Clean the fridge",false);
+    addTask("low","Clean the fridge 2",false);
     //let toDoList = document.getElementById("toDoList")
     let toDoListLength = document.querySelectorAll(".to-do-list > li").length
     console.log(toDoListLength)
@@ -14,7 +14,7 @@ test("Submitting a new task adds something to the list", t => {
 });
 
 test("Submitting a new task adds the correct template to the list", t => {
-    addTask("low","Clean the fridge",false);
+    addTask("low","Clean the fridge 3",false);
     let thePriority = document.querySelector(".to-do-list > li:last-child > div") !== null;
     let theText = document.querySelector(".to-do-list > li:last-child > p") !== null;
     let theStatus = document.querySelector(".to-do-list > li:last-child > input") !== null;
@@ -22,12 +22,12 @@ test("Submitting a new task adds the correct template to the list", t => {
 });
 
 test("Checking the correct data is added", t => {
-    addTask("low","Clean the fridge",false);
+    addTask("low","Clean the fridge 4",false);
     let thePriority = document.querySelector(".to-do-list > li:last-child > div");
     let theText = document.querySelector(".to-do-list > li:last-child > p");
     let theStatus = document.querySelector(".to-do-list > li:last-child > input");
     t.equal(thePriority.classList.contains("low"), true);
-    t.equal(theText.textContent, "Clean the fridge");
+    t.equal(theText.textContent, "Clean the fridge 4");
     t.equal(theStatus.checked, false);
 
 });
