@@ -1,6 +1,16 @@
 console.log("Running tests...");
 console.log("Done.");
 
+
+function clearList(listSelector){
+    let theList = document.querySelectorAll(listSelector);
+    theList.forEach( elem =>{
+        elem.remove();
+        }
+    );
+}
+
+
 test("Check the function exists", t => {
     addTask("low","Clean the fridge",false);
 });
@@ -11,6 +21,7 @@ test("Submitting a new task adds something to the list", t => {
     let toDoListLength = document.querySelectorAll(".to-do-list > li").length
     console.log(toDoListLength)
     t.equal (toDoListLength > 0, true)
+    clearList(".to-do-list > li");
 });
 
 test("Submitting a new task adds the correct template to the list", t => {
@@ -19,6 +30,7 @@ test("Submitting a new task adds the correct template to the list", t => {
     let theText = document.querySelector(".to-do-list > li:last-child > p") !== null;
     let theStatus = document.querySelector(".to-do-list > li:last-child > input") !== null;
     t.equal (thePriority && theText && theStatus, true);
+    clearList(".to-do-list > li");
 });
 
 test("Checking the correct data is added", t => {
@@ -29,7 +41,7 @@ test("Checking the correct data is added", t => {
     t.equal(thePriority.classList.contains("low"), true);
     t.equal(theText.textContent, "Clean the fridge");
     t.equal(theStatus.checked, false);
-
+    clearList(".to-do-list > li");
 });
 
 test("Checking an entry marks it as complete", t => {
