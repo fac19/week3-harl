@@ -43,3 +43,10 @@ test("Deleting an entry removes it from the list", t => {
 test("Toggling the filter hides completed tasks from the list", t => {
     // test goes here
 });
+
+test("Selecting a radio button returns a correct value when clicked or selected on keyboard", t => {
+  const lowButton = document.getElementById("priorityLow");
+  const result = lowButton.value;
+  lowButton.click();
+  t.equal(result, "low")    
+});

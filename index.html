@@ -32,11 +32,8 @@
   <button class="new-task-button" id="newTaskButton">+</button>
 
   <form class="new-task-form" action="">
-    <header>
-      <h1>New Task</h1>
-    </header>
-    <button class="new-task-form__save-button" type="submit">Save</button>
-    
+    <header><h1>New Task</h1></header>
+    <button class="new-task-form__cancel-button">&times;</button>
     <fieldset class="new-task-form__radio-toolbar">
       <legend>What is the priority of your task?</legend>
       <input type="radio" id="priorityLow" name="priority" value="low">
@@ -46,12 +43,11 @@
       <input type="radio" id="priorityHigh" name="priority" value="high">
       <label class="new-task-form__radio-toolbar-button--high" for="priorityHigh">High</label>
     </fieldset>
-
     <label>
       What is your task?
     <textarea></textarea>
     </label>
-      
+    <button class="new-task-form__save-button" type="submit">Save</button>
   </form>
   <script src="index.js"></script>
   <script src="testhelpers.js"></script>
