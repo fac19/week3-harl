@@ -32,6 +32,20 @@ test("Checking the correct data is added", t => {
 
 });
 
+test("Checking if submiting the new task form addes a task to the to-do list", t => {
+    // addTask("low","Clean the fridge",false);
+    highPriority.click();
+    formText.textContent = "submit integration test.";
+    formSubmit.click();
+
+    let thePriority = document.querySelector(".to-do-list > li:last-child > div");
+    let theText = document.querySelector(".to-do-list > li:last-child > p");
+    let theStatus = document.querySelector(".to-do-list > li:last-child > input");
+    t.equal(thePriority.classList.contains("high"), true);
+    t.equal(theText.textContent, "submit integration test.");
+    t.equal(theStatus.checked, false);
+});
+
 test("Checking an entry marks it as complete", t => {
   // test goes here
 });
@@ -44,9 +58,14 @@ test("Toggling the filter hides completed tasks from the list", t => {
     // test goes here
 });
 
-test("Selecting a radio button returns a correct value when clicked or selected on keyboard", t => {
-  const lowButton = document.getElementById("priorityLow");
-  const result = lowButton.value;
-  lowButton.click();
-  t.equal(result, "low")    
-});
+// test("Selecting low radio button returns a correct value when clicked or selected on keyboard", t => {
+//   const result = lowPriority.value;
+//   lowPriority.click();
+//   t.equal(result, "low");    
+// });
+
+// test("Selecting high radio button returns a correct value when clicked or selected on keyboard", t => {
+//     const result = highPriority.value;
+//     highPriority.click();
+//     t.equal(result, "high");    
+// });
