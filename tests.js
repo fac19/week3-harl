@@ -1,5 +1,11 @@
-console.log("Running tests...");
-console.log("Done.");
+function clearList(listSelector){
+    let theList = document.querySelectorAll(listSelector);
+    theList.forEach( elem =>{
+        elem.remove();
+        }
+    );
+}
+
 
 test("Check the function exists", t => {
     addTask("low","Clean the fridge 1",false);
@@ -11,6 +17,7 @@ test("Submitting a new task adds something to the list", t => {
     let toDoListLength = document.querySelectorAll(".to-do-list > li").length
     console.log(toDoListLength)
     t.equal (toDoListLength > 0, true)
+    clearList(".to-do-list > li");
 });
 
 test("Submitting a new task adds the correct template to the list", t => {
@@ -19,6 +26,7 @@ test("Submitting a new task adds the correct template to the list", t => {
     let theText = document.querySelector(".to-do-list > li:last-child > p") !== null;
     let theStatus = document.querySelector(".to-do-list > li:last-child > input") !== null;
     t.equal (thePriority && theText && theStatus, true);
+    clearList(".to-do-list > li");
 });
 
 test("Checking the correct data is added", t => {
@@ -29,7 +37,7 @@ test("Checking the correct data is added", t => {
     t.equal(thePriority.classList.contains("low"), true);
     t.equal(theText.textContent, "Clean the fridge 4");
     t.equal(theStatus.checked, false);
-
+    clearList(".to-do-list > li");
 });
 
 test("Checking if submiting the new task form addes a task to the to-do list", t => {
@@ -37,13 +45,14 @@ test("Checking if submiting the new task form addes a task to the to-do list", t
     highPriority.click();
     formText.textContent = "submit integration test.";
     formSubmit.click();
-
+    
     let thePriority = document.querySelector(".to-do-list > li:last-child > div");
     let theText = document.querySelector(".to-do-list > li:last-child > p");
     let theStatus = document.querySelector(".to-do-list > li:last-child > input");
     t.equal(thePriority.classList.contains("high"), true);
     t.equal(theText.textContent, "submit integration test.");
     t.equal(theStatus.checked, false);
+    clearList(".to-do-list > li");
 });
 
 test("Checking an entry marks it as complete", t => {
@@ -55,17 +64,20 @@ test("Deleting an entry removes it from the list", t => {
 });
 
 test("Toggling the filter hides completed tasks from the list", t => {
-    // test goes here
+    doneTab.click();
+    const result = doneTab.classList.contains("hidden")
+    t.equal(result, false)
+    toDoTab.click()
 });
 
-// test("Selecting low radio button returns a correct value when clicked or selected on keyboard", t => {
-//   const result = lowPriority.value;
-//   lowPriority.click();
-//   t.equal(result, "low");    
-// });
+test("Selecting low radio button returns a correct value when clicked or selected on keyboard", t => {
+  const result = lowPriority.value;
+  lowPriority.click();
+  t.equal(result, "low");    
+});
 
-// test("Selecting high radio button returns a correct value when clicked or selected on keyboard", t => {
-//     const result = highPriority.value;
-//     highPriority.click();
-//     t.equal(result, "high");    
-// });
+test("Selecting high radio button returns a correct value when clicked or selected on keyboard", t => {
+    const result = highPriority.value;
+    highPriority.click();
+    t.equal(result, "high");    
+});

@@ -5,6 +5,18 @@ const getNewID = _ => { nodeID++; return nodeID; }
 
 const toDoList = document.getElementById("toDoList");
 const doneList = document.getElementById("doneList");
+const toDoTab = document.getElementById("tabsToDo")
+const doneTab = document.getElementById("tabsDone");
+
+doneTab.addEventListener("click", () => {
+    toDoList.classList.add("hidden");
+    doneList.classList.remove("hidden")
+});
+toDoTab.addEventListener("click", () => {
+  doneList.classList.add("hidden");
+  toDoList.classList.remove("hidden")
+});
+
 
 const lowPriority = document.getElementById("priorityLow");
 const mediumPriority = document.getElementById("priorityMedium");
@@ -46,13 +58,15 @@ function addTask(priority, text, checkBox){
     })
     
     let theStatus = newTask.querySelector(".to-do-list__card__checkbox");
+
+    theStatus.checked = checkBox;
+
     theStatus.addEventListener("click", () => {
         if(theStatus.checked) {
             doneList.appendChild(newTask);
             toDoList.removeChild(newTask);
         }
     })
-    theStatus.checked = checkBox;
 
     toDoList.appendChild(newTask);
 }

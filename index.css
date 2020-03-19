@@ -61,3 +61,7 @@ body {
 .new-task-form__radio-toolbar input[type="radio"]:checked + label {
   border: 0.1rem solid var(--border-colour);
 }
+
+.hidden {
+  display: none;
+}
