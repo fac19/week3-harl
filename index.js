@@ -8,7 +8,8 @@ const lowPriority = document.getElementById("priorityLow");
 const mediumPriority = document.getElementById("priorityMedium");
 const highPriority = document.getElementById("priorityHigh");
 
-const formPriority = document.querySelector('input[checked=true]');
+const formPriorityRadios = document.querySelectorAll('input[name=priority]');
+const form = document.querySelector('.new-task-form');
 const formText = document.getElementById("newTaskFormText");
 
 const formSubmit = document.getElementById("formButton")
@@ -40,11 +41,9 @@ function addTask(priority, text, checkBox){
 }
 
 formSubmit.addEventListener("click", event => {
-    console.log("EVENT:", event);
     event.preventDefault();
-    console.log("FORMTEXT", formText.value);
-    console.log("FORMPRIORITY:", formPriority);
-    addTask(formPriority.value, formText.textContent, false);
+    let selected = [...formPriorityRadios].filter( el => el.checked )[0];
+    addTask(selected.value, formText.textContent, false);
 
 })
 
