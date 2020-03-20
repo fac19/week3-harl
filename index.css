@@ -78,10 +78,6 @@ body {
 .new-task-form__radio-toolbar-button--low {
   background-color: var(--low-priority);
 }
-.new-task-form__radio-toolbar-button--low:focus {
-  outline: none;
-  background-color: var(--low-priority);
-}
 .new-task-form__radio-toolbar-button--medium {
   background-color: var(--medium-priority);
 }
