@@ -36,10 +36,12 @@
   <button class="new-task-button" id="newTaskButton">+</button>
 
   <form class="new-task-form" action="">
-    <header><h1>New Task</h1></header>
-    <button class="new-task-form__delete-button" id="formDelete">&times;</button>
+    <div class="new-task-form-row-1">
+      <header><h1>New Task</h1></header>
+      <button class="new-task-form__delete-button" id="formDelete">Delete</button>
+    </div>
     <fieldset class="new-task-form__radio-toolbar">
-      <legend>What is the priority of your task?</legend>
+      <legend>Select the priority of the task</legend>
       <input type="radio" id="priorityLow" name="priority" value="low">
       <label class="new-task-form__radio-toolbar-button--low" for="priorityLow">Low</label>
       <input type="radio" id="priorityMedium" name="priority" value="medium">
@@ -47,11 +49,11 @@
       <input type="radio" id="priorityHigh" name="priority" value="high">
       <label class="new-task-form__radio-toolbar-button--high" for="priorityHigh">High</label>
     </fieldset>
-    <label>
-      What is your task?
-    <textarea class="new-task-form__text" id="newTaskFormText"></textarea>
-    </label>
-    <button class="new-task-form__save-button" type="submit" id="formButton">Save</button>
+    <div class="new-task-form-row-3">
+      <label for="newTaskFormText">What is your task?</label>
+      <textarea class="new-task-form__text" id="newTaskFormText"></textarea>
+      <button class="new-task-form__save-button" type="submit" id="formButton">Save</button>
+    </div>
   </form>
   <script src="index.js"></script>
   <script src="testhelpers.js"></script>
