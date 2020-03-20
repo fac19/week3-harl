@@ -11,6 +11,7 @@ const formText = document.getElementById("newTaskFormText");
 const formSubmit = document.getElementById("formButton");
 const formDelete = document.getElementById("formDelete");
 const newTaskButton = document.getElementById("newTaskButton");
+const newTaskForm = document.getElementById("newTaskForm");
 
 // Switch to done tab
 doneTab.addEventListener("click", () => {
@@ -46,6 +47,7 @@ function addTask(priority, text, checkBox){
 }
 
 formSubmit.addEventListener("click", event => {
+    newTaskForm.style.display = "none";
     // On save buttom clicked marshall the form fields and pass them to addTask
     event.preventDefault();
     let text = formText.value;
@@ -55,11 +57,13 @@ formSubmit.addEventListener("click", event => {
 
 formDelete.addEventListener("click", event => {
     event.preventDefault();
+    newTaskForm.style.display = "none";
     // Event is already deleted by the time the form is shown so we do nothing
     // Apart from maybe trigger a UI change e.g. hide form, show list again.
 })
 
 newTaskButton.addEventListener("click", event => {
+    newTaskForm.style.display = "grid";
     // Clear form
     formText.value = "";
     lowPriority.click();
@@ -78,6 +82,7 @@ function getSelectedRadioNode() {
 }
 
 function editHandler(event){
+    newTaskForm.style.display = "grid";
     // When edit has been clicked copy task data back into the form and remove from todo
     theNode = getAncestorIfItHasClass(event.target, "to-do-list__card");
     formText.value = theNode.querySelector(".to-do-list__card__text").textContent
