@@ -181,3 +181,5 @@ test("Clicking add (newTaskButton) clears the form", t => {
     t.equal(getSelectedRadioNode().value, "low");
 
 });
+
+newTaskForm.style.display = "none";

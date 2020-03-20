@@ -16,6 +16,9 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0 auto;
 }
+.title {
+  margin: 0 auto;
+}
 
 
 /* Navigation bar */
@@ -40,6 +43,45 @@ body {
   background-color: var(--low-priority);
 }
 
+/* list item style */
+.to-do-list, .done-list {
+  padding: 0;
+}
+.to-do-list__card {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  list-style: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.to-do-list__card__text {
+  margin-left: 3% ;
+  float: left;
+}
+.to-do-list__card__priority {
+  display: block;
+  position: absolute;
+  width: 2%;
+  height: 100%;
+  /* background-color: blue; */
+}
+.low{
+  background-color: var(--low-priority) 
+}
+.medium {
+  background-color: var(--medium-priority)
+}
+
+.high{
+  background-color: var(--high-priority)
+}
+
+.to-do-list__card__checkbox {
+  float: right;
+}
+/* end of list item style */
 .new-task-button {
   margin: 0 auto;
   height: 3rem;
@@ -51,10 +93,10 @@ body {
   border-radius: 50%;
 }
 .new-task-form {
-  display: grid;
+  display: none;
   grid-template-rows: 1fr 1fr 4fr;
+  margin: 0.5rem;
   height: 100vh;
-  margin: 3rem;
 }
 
 .new-task-form-row-1 {
@@ -88,7 +130,7 @@ body {
   font-weight: 600;
   width: 5rem;
   height: 2.5rem;
-  margin-top: 1rem;
+  margin: 1rem auto;
 }
 .new-task-form__radio-toolbar {
   border: 0px;
@@ -130,6 +172,7 @@ body {
 .new-task-form__radio-toolbar input[type="radio"]:checked + label {
   border: 0.2rem solid var(--accent-colour);
 }
+
 
 .hidden {
   display: none;
